@@ -1,5 +1,28 @@
 .App {
   text-align: center;
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.App::before {
+  content: '';
+  position: absolute;
+    width: 100%;
+    height: 100%;
+  background-image: url('../public/heart.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.2;
+  z-index: 0;
+  top: 0;
+  left: 0;
 }
 
 .App-logo {
@@ -35,4 +58,509 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.form-container {
+  max-width: 600px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+h1 {
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Общие стили для всех полей ввода */
+input, textarea, select, .MuiOutlinedInput-root {
+  width: 100%;
+  padding: 12px;
+  background-color: #ffffff;
+  border: 1px solid #D1D1D1;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  color: #000000;
+  box-sizing: border-box;
+}
+
+input:focus, textarea:focus, select:focus, .MuiOutlinedInput-root.Mui-focused {
+  outline: none;
+  border-color: #FB36F4;
+  box-shadow: 0 0 0 2px rgba(251, 54, 244, 0.2);
+}
+
+input:hover, textarea:hover, select:hover, .MuiOutlinedInput-root:hover {
+  border-color: #FB36F4;
+}
+
+/* Стили для группы формы */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.submit-button {
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(251, 54, 244, 0.3);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* Стили для плейсхолдеров */
+::placeholder {
+  color: #666666;
+  opacity: 0.7;
+}
+
+/* Стили для выпадающего списка */
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+}
+
+/* Стили для блока с информацией о знаке зодиака */
+.zodiac-info {
+  margin-top: 10px;
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  border: 1px solid #D1D1D1;
+}
+
+.zodiac-info p {
+  margin: 5px 0;
+  color: #ffffff;
+  font-size: 16px;
+}
+
+/* Стили для MUI DatePicker */
+.mui-date-picker {
+  width: 100%;
+}
+
+.mui-date-picker .MuiOutlinedInput-root {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.mui-date-picker .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #D1D1D1;
+}
+
+.mui-date-picker .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #FB36F4;
+}
+
+.mui-date-picker .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #FB36F4;
+  border-width: 2px;
+}
+
+.mui-date-picker .MuiInputLabel-root {
+  color: #ffffff;
+}
+
+.mui-date-picker .MuiInputLabel-root.Mui-focused {
+  color: #FB36F4;
+}
+
+.mui-date-picker .MuiOutlinedInput-input {
+  color: #000000;
+}
+
+/* Стили для календаря в попапе */
+.MuiPaper-root {
+  background-color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.MuiPickersDay-root {
+  color: #000000 !important;
+}
+
+.MuiPickersDay-root.Mui-selected {
+  background: linear-gradient(45deg, #0100EC, #FB36F4) !important;
+  color: white !important;
+}
+
+.MuiPickersDay-root.Mui-selected:hover {
+  background: linear-gradient(45deg, #0100EC, #FB36F4) !important;
+  opacity: 0.9;
+}
+
+.MuiPickersDay-root:hover {
+  background-color: rgba(251, 54, 244, 0.1) !important;
+}
+
+.MuiPickersCalendarHeader-root {
+  color: #000000 !important;
+}
+
+.MuiPickersCalendarHeader-label {
+  color: #000000 !important;
+  font-weight: 600 !important;
+}
+
+.MuiPickersArrowSwitcher-button {
+  color: #000000 !important;
+}
+
+.MuiPickersArrowSwitcher-button:hover {
+  background-color: rgba(251, 54, 244, 0.1) !important;
+}
+
+/* Стили для иконки календаря */
+.mui-date-picker .MuiInputAdornment-root .MuiSvgIcon-root {
+  color: #FB36F4 !important;
+}
+
+/* Стили для текста в поле ввода даты */
+.mui-date-picker .MuiOutlinedInput-input {
+  color: #000000 !important;
+}
+
+/* Стили для плейсхолдера в поле даты */
+.mui-date-picker .MuiInputLabel-root.MuiInputLabel-shrink {
+  color: #FB36F4 !important;
+}
+
+/* Стили для кнопок в календаре */
+.MuiPickersCalendarHeader-switchHeader button {
+  color: #000000 !important;
+}
+
+.MuiPickersCalendarHeader-switchHeader button:hover {
+  background-color: rgba(251, 54, 244, 0.1) !important;
+}
+
+/* Стили для текущего дня в календаре */
+.MuiPickersDay-root.Mui-selected.MuiPickersDay-today {
+  background: linear-gradient(45deg, #0100EC, #FB36F4) !important;
+  color: white !important;
+  border: 2px solid #FB36F4 !important;
+}
+
+/* Стили для дней вне текущего месяца */
+.MuiPickersDay-root.MuiPickersDay-dayOutsideMonth {
+  color: #666666 !important;
+}
+
+/* Стили для отключенных дней */
+.MuiPickersDay-root.Mui-disabled {
+  color: #999999 !important;
+}
+
+/* Стили для календаря */
+input[type="date"] {
+  cursor: pointer;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+/* Стили для Autocomplete увлечений */
+.hobbies-autocomplete {
+  width: 100%;
+}
+
+.hobbies-autocomplete .MuiOutlinedInput-root {
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+
+.hobbies-autocomplete .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border-color: #D1D1D1;
+}
+
+.hobbies-autocomplete .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+  border-color: #FB36F4;
+}
+
+.hobbies-autocomplete .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+  border-color: #FB36F4;
+  border-width: 2px;
+}
+
+.hobbies-autocomplete .MuiInputLabel-root {
+  color: #ffffff;
+}
+
+.hobbies-autocomplete .MuiInputLabel-root.Mui-focused {
+  color: #FB36F4;
+}
+
+.hobbies-autocomplete .MuiAutocomplete-input {
+  color: #000000 !important;
+}
+
+/* Стили для чипов (тегов) увлечений */
+.hobby-chip {
+  background: linear-gradient(45deg, #0100EC, #FB36F4) !important;
+  color: white !important;
+  margin: 2px !important;
+}
+
+.hobby-chip .MuiChip-deleteIcon {
+  color: white !important;
+}
+
+.hobby-chip .MuiChip-deleteIcon:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Стили для выпадающего списка увлечений */
+.MuiAutocomplete-popper {
+  background-color: #ffffff !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
+}
+
+.MuiAutocomplete-option {
+  color: #000000 !important;
+}
+
+.MuiAutocomplete-option:hover {
+  background-color: rgba(251, 54, 244, 0.1) !important;
+}
+
+.MuiAutocomplete-option[aria-selected="true"] {
+  background: linear-gradient(45deg, #0100EC, #FB36F4) !important;
+  color: white !important;
+}
+
+.MuiAutocomplete-option[aria-selected="true"].Mui-focused {
+  background: linear-gradient(45deg, #0100EC, #FB36F4) !important;
+  opacity: 0.9;
+}
+
+/* Стили для иконки очистки */
+.hobbies-autocomplete .MuiAutocomplete-clearIndicator {
+  color: #FB36F4 !important;
+}
+
+.hobbies-autocomplete .MuiAutocomplete-clearIndicator:hover {
+  color: #0100EC !important;
+}
+
+/* Стили для иконки раскрытия списка */
+.hobbies-autocomplete .MuiAutocomplete-popupIndicator {
+  color: #FB36F4 !important;
+}
+
+.hobbies-autocomplete .MuiAutocomplete-popupIndicator:hover {
+  color: #0100EC !important;
+}
+
+/* Стили для слайдера роста */
+.height-slider-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.height-slider .MuiSlider-root {
+  color: #FB36F4;
+}
+
+.height-slider .MuiSlider-thumb {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+  box-shadow: 0 0 10px rgba(251, 54, 244, 0.3);
+}
+
+.height-slider .MuiSlider-thumb:hover {
+  box-shadow: 0 0 15px rgba(251, 54, 244, 0.5);
+}
+
+.height-slider .MuiSlider-track {
+  height: 4px;
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+}
+
+.height-slider .MuiSlider-rail {
+  height: 4px;
+  background-color: #D1D1D1;
+}
+
+.height-slider .MuiSlider-mark {
+  background-color: #D1D1D1;
+  width: 2px;
+  height: 8px;
+}
+
+.height-slider .MuiSlider-markLabel {
+  color: #000000;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.height-slider .MuiSlider-valueLabel {
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+  color: white;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.height-value {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Стили для слайдера веса */
+.weight-slider-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.weight-slider .MuiSlider-root {
+  color: #FB36F4;
+}
+
+.weight-slider .MuiSlider-thumb {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+  box-shadow: 0 0 10px rgba(251, 54, 244, 0.3);
+}
+
+.weight-slider .MuiSlider-thumb:hover {
+  box-shadow: 0 0 15px rgba(251, 54, 244, 0.5);
+}
+
+.weight-slider .MuiSlider-track {
+  height: 4px;
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+}
+
+.weight-slider .MuiSlider-rail {
+  height: 4px;
+  background-color: #D1D1D1;
+}
+
+.weight-slider .MuiSlider-mark {
+  background-color: #D1D1D1;
+  width: 2px;
+  height: 8px;
+}
+
+.weight-slider .MuiSlider-markLabel {
+  color: #000000;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.weight-slider .MuiSlider-valueLabel {
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+  color: white;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.weight-value {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #000000;
+}
+
+/* Стили для поля ввода веса */
+.weight-input-container {
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #D1D1D1;
+}
+
+.weight-input {
+  width: 100%;
+}
+
+.weight-input .MuiInputBase-input {
+  color: #000000;
+  font-size: 16px;
+  padding: 0;
+}
+
+.weight-input .MuiInputBase-input::-webkit-inner-spin-button,
+.weight-input .MuiInputBase-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.weight-input .MuiInputBase-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.weight-unit {
+  color: #000000;
+  font-size: 16px;
+  margin-left: 8px;
+}
+
+.weight-input:hover {
+  border-color: #FB36F4;
+}
+
+.weight-input.Mui-focused {
+  border-color: #FB36F4;
 }
