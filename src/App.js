@@ -3,19 +3,27 @@ import { differenceInYears } from 'date-fns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { Autocomplete, TextField, Chip, Slider, Input } from '@mui/material';
+import { Autocomplete, TextField, Chip, Slider, Input, FormControlLabel, RadioGroup, Radio, FormControl, FormLabel } from '@mui/material';
 import { ru } from 'date-fns/locale';
 import './App.css';
+import ResultPage from './ResultPage';
 
 function App() {
+  const [currentPage, setCurrentPage] = useState('form');
   const [formData, setFormData] = useState({
     name: '',
     birthDate: null,
+    gender: '',
     hobbies: [],
     height: 170,
     weight: 70,
     zodiacSign: '',
-    eyeColor: ''
+    eyeColor: '',
+    relationshipGoal: '',
+    maritalStatus: '',
+    hasChildren: '',
+    childrenCount: '',
+    childrenLiveTogether: ''
   });
 
   const hobbyOptions = [
@@ -148,8 +156,19 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Здесь будет логика генерации описания
-    console.log('Form submitted:', formData);
+    // Проверяем, что все обязательные поля заполнены
+    if (formData.name && formData.birthDate && formData.gender && 
+        formData.hobbies.length > 0 && formData.eyeColor && 
+        formData.relationshipGoal && 
+        formData.maritalStatus && formData.hasChildren) {
+      setCurrentPage('result');
+    } else {
+      alert('Пожалуйста, заполните все обязательные поля');
+    }
+  };
+
+  const handleBackToForm = () => {
+    setCurrentPage('form');
   };
 
   const getZodiacSignName = (sign) => {
@@ -170,6 +189,10 @@ function App() {
     return signs[sign] || '';
   };
 
+  if (currentPage === 'result') {
+    return <ResultPage formData={formData} onBack={handleBackToForm} />;
+  }
+
   return (
     <div className="App">
       <div className="form-container">
@@ -188,6 +211,21 @@ function App() {
           </div>
 
           <div className="form-group">
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Пол:</FormLabel>
+              <RadioGroup
+                row
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="male" control={<Radio />} label="Мужчина" />
+                <FormControlLabel value="female" control={<Radio />} label="Женщина" />
+              </RadioGroup>
+            </FormControl>
+          </div>
+
+          <div className="form-group">
             <label>Дата рождения:</label>
             <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={ru}>
               <DatePicker
@@ -201,7 +239,8 @@ function App() {
                     className: "mui-date-picker"
                   }
                 }}
-                maxDate={new Date()}
+                maxDate={new Date(new Date().getFullYear() - 18, new Date().getMonth(), new Date().getDate())}
+                minDate={new Date(new Date().getFullYear() - 50, new Date().getMonth(), new Date().getDate())}
                 format="dd.MM.yyyy"
               />
             </LocalizationProvider>
@@ -252,7 +291,7 @@ function App() {
           </div>
 
           <div className="form-group">
-            <label>Рост (см):</label>
+            <label htmlFor="height">Рост (см):</label>
             <div className="height-slider-container">
               <Slider
                 value={formData.height}
@@ -275,7 +314,7 @@ function App() {
           </div>
 
           <div className="form-group">
-            <label>Вес (кг):</label>
+            <label htmlFor="weight">Вес (кг):</label>
             <div className="weight-slider-container">
               <Slider
                 value={formData.weight}
@@ -317,6 +356,86 @@ function App() {
               <option value="heterochromia">Разные</option>
             </select>
           </div>
+
+          <div className="form-group">
+            <label htmlFor="relationshipGoal">Цель знакомства:</label>
+            <select
+              id="relationshipGoal"
+              name="relationshipGoal"
+              value={formData.relationshipGoal}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Выберите цель</option>
+              <option value="serious">Серьезные отношения</option>
+              <option value="friendship">Дружба</option>
+              <option value="flirt">Флирт</option>
+              <option value="marriage">Брак</option>
+              <option value="casual">Несерьезные отношения</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="maritalStatus">Семейное положение:</label>
+            <select
+              id="maritalStatus"
+              name="maritalStatus"
+              value={formData.maritalStatus}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Выберите статус</option>
+              <option value="single">Не женат/не замужем</option>
+              <option value="divorced">Разведен/а</option>
+              <option value="inRelationship">В отношениях</option>
+              <option value="widowed">Вдовец/вдова</option>
+            </select>
+          </div>
+
+          <div className="form-group">
+            <FormControl component="fieldset">
+              <FormLabel component="legend">Дети:</FormLabel>
+              <RadioGroup
+                name="hasChildren"
+                value={formData.hasChildren}
+                onChange={handleChange}
+              >
+                <FormControlLabel value="yes" control={<Radio />} label="Есть" />
+                <FormControlLabel value="no" control={<Radio />} label="Нет" />
+              </RadioGroup>
+            </FormControl>
+          </div>
+
+          {formData.hasChildren === 'yes' && (
+            <>
+              <div className="form-group">
+                <label htmlFor="childrenCount">Количество детей:</label>
+                <input
+                  type="number"
+                  id="childrenCount"
+                  name="childrenCount"
+                  value={formData.childrenCount}
+                  onChange={handleChange}
+                  min="1"
+                  max="10"
+                />
+              </div>
+
+              <div className="form-group">
+                <FormControl component="fieldset">
+                  <FormLabel component="legend">Дети живут вместе:</FormLabel>
+                  <RadioGroup
+                    name="childrenLiveTogether"
+                    value={formData.childrenLiveTogether}
+                    onChange={handleChange}
+                  >
+                    <FormControlLabel value="yes" control={<Radio />} label="Да" />
+                    <FormControlLabel value="no" control={<Radio />} label="Нет" />
+                  </RadioGroup>
+                </FormControl>
+              </div>
+            </>
+          )}
 
           <button type="submit" className="submit-button">
             Сгенерировать описание

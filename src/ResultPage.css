@@ -1,0 +1,86 @@
+.result-page {
+  text-align: center;
+  min-height: 100vh;
+  background-color: #000000;
+  padding: 20px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.result-page::before {
+  content: '';
+  position: absolute;
+  width: 1420px;
+  height: 960px;
+  background-image: url('../public/heart.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.3;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.result-container {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+.result-container h1 {
+  color: #ffffff;
+  margin-bottom: 30px;
+  font-size: 3rem;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.description {
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: left;
+  margin-bottom: 40px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button {
+  background: linear-gradient(45deg, #0100EC, #FB36F4);
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.back-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(251, 54, 244, 0.3);
+}
+
+.back-button:active {
+  transform: translateY(0);
+} 

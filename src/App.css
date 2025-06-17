@@ -564,3 +564,51 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .weight-input.Mui-focused {
   border-color: #FB36F4;
 }
+
+/* Стили для радио кнопок */
+.MuiFormControl-root {
+  width: 100%;
+}
+
+.MuiFormLabel-root {
+  color: #ffffff !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
+}
+
+.MuiFormLabel-root.Mui-focused {
+  color: #FB36F4 !important;
+}
+
+.MuiRadio-root {
+  color: #D1D1D1 !important;
+}
+
+.MuiRadio-root.Mui-checked {
+  color: #FB36F4 !important;
+}
+
+.MuiRadio-root:hover {
+  background-color: rgba(251, 54, 244, 0.1) !important;
+}
+
+.MuiFormControlLabel-root {
+  color: #ffffff !important;
+  margin: 4px 0 !important;
+}
+
+.MuiFormControlLabel-label {
+  color: #ffffff !important;
+  font-size: 16px !important;
+}
+
+.MuiRadioGroup-root {
+  margin-top: 8px !important;
+}
+
+/* Стили для условных полей */
+.conditional-fields {
+  margin-top: 10px;
+  padding-left: 20px;
+  border-left: 2px solid #FB36F4;
+}
