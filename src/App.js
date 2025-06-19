@@ -7,6 +7,7 @@ import { Autocomplete, TextField, Chip, Slider, Input, FormControlLabel, RadioGr
 import { ru } from 'date-fns/locale';
 import './App.css';
 import ResultPage from './ResultPage';
+import  hobbieOptions  from './hobbieOptions';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('form');
@@ -26,59 +27,7 @@ function App() {
     childrenLiveTogether: ''
   });
 
-  const hobbyOptions = [
-    'Путешествия',
-    'Фотография',
-    'Кулинария',
-    'Спорт',
-    'Чтение',
-    'Музыка',
-    'Танцы',
-    'Рисование',
-    'Йога',
-    'Медитация',
-    'Программирование',
-    'Садоводство',
-    'Волонтерство',
-    'Коллекционирование',
-    'Театр',
-    'Кино',
-    'Шахматы',
-    'Плавание',
-    'Велоспорт',
-    'Горные лыжи',
-    'Сноуборд',
-    'Серфинг',
-    'Скалолазание',
-    'Бег',
-    'Теннис',
-    'Гольф',
-    'Рыбалка',
-    'Охота',
-    'Пение',
-    'Игра на музыкальных инструментах',
-    'Иностранные языки',
-    'История',
-    'Археология',
-    'Астрономия',
-    'Психология',
-    'Философия',
-    'Политика',
-    'Экономика',
-    'Мода',
-    'Дизайн',
-    'Архитектура',
-    'Живопись',
-    'Скульптура',
-    'Каллиграфия',
-    'Рукоделие',
-    'Вязание',
-    'Вышивание',
-    'Гончарное дело',
-    'Деревообработка',
-    'Металлообработка',
-    'Электроника'
-  ];
+  console.log(hobbieOptions);
 
   const getZodiacSign = (date) => {
     const month = date.getMonth() + 1;
@@ -257,7 +206,7 @@ function App() {
             <Autocomplete
               multiple
               id="hobbies"
-              options={hobbyOptions}
+              options={hobbieOptions}
               value={formData.hobbies}
               onChange={handleHobbiesChange}
               freeSolo
